@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./style.css">
+	<title>Guess the Word Game</title>
+</head>
+
+<!-- Game Starts from here -->
+<body>
+	<header>
+		<h1>Guess the Word Game</h1>
+	</header>
+<section>
+	<div class="gameArea">
+		<h3 class="msg"></h3>
+		<input type="text" class="hidden">
+		<button class="btn">Click Here to Start</button>
+	</div>
+</section>
+<audio src="Music/KBC-next.mpeg"></audio>
+<audio src="Music/kbc_background.mp3" id="bg"></audio>
+
+<script>
+	const msg = document.querySelector('.msg');
+	const guess = document.querySelector('input');
+	const btn = document.querySelector('.btn');
+	
+	let sWords = ['Lakhimpur', 'Sitapur', 'Shahrukh', 'Ghaziabad', 'Salman' , 'Iron-Man', 'Hulk' , 'Thor', 'Karan', 'Yashi', 'Harsh'];
+	let newWords = " ";
+	let randomWords = " ";
+
+	const createNewWords = () => {
+		let randNum = Math.floor(Math.random() * sWords.length)
+		let newSWords = sWords[randNum];
+		return newSWords;
+
+	}
+
+	const ScrambleWords = (arr) => {
+		for (let i = arr.length-1; i>0; i--){
+			let temp = arr[i];
+			let j = Math.floor(Math.random() * (i+1));
+			arr[i] = arr[j];
+			arr[j] = temp;
+		}
+		return arr;
+	}
+
+	const music = document.querySelector('audio');
+	const bgmusic = document.getElementById('bg');
+	
+
+	let play = false;
+	let score = 0;
+	btn.addEventListener('click', function(){
+		if(!play){
+			play = true;
+			btn.innerHTML ="Guess";
+			guess.classList.toggle('hidden');
+			music.play();
+			newWords = createNewWords();
+			randomWords = ScrambleWords(newWords.split("")).join("");
+			msg.innerHTML = `Guess the Word : ${randomWords}`;
+		}else{
+			let guessWord = guess.value;
+			if(guessWord === newWords){
+				score += 1;
+				play = false;
+				msg.innerHTML = `Awesome!! Correct, It's ${newWords}. Your Score : ${score}`
+				btn.innerHTML = 'Start Again';
+				guess.classList.toggle('hidden');
+				guess.value = "";
+			}
+			else{
+				msg.innerHTML = `Ooops! Wrong Answer, Try Agian: ${randomWords}`;
+				score -= 1;
+			}
+		}
+	});
+</script>
+<h5>-Harsh Nigam</h5>
+</body>
+</html>
