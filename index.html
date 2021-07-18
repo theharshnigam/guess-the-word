@@ -25,14 +25,13 @@
 		<!-- <button class="btn">Hint</button> -->
 	</div>
 </section>
-<audio src="Music/KBC-next.mpeg" id="music"></audio>
+<audio src="Music/KBC-next.mpeg" id="nextMusic"></audio>
 <audio src="Music/kbc_background.mp3" id="bg"></audio>
 
 <script>
 	const msg = document.querySelector('.msg');
 	const guess = document.querySelector('input');
 	const btn = document.querySelector('.btn');
-	const hint = document.querySelector('.btn');
 	
 	let sWords = ['Lakhimpur', 'Sitapur', 'Ghaziabad', 'Salman' , 'Iron-Man', 'Hulk' , 'Thor', 'Lucknow','Gorakhpur','AKGEC','Batman','Instagram',
 'Study','Facebook','WhatsApp','BGMI','India'];
@@ -56,12 +55,13 @@
 		return arr;
 	}
 
-	const music = document.querySelector('music');
+	const music = document.getElementById('nextMusic');
 	const bgmusic = document.getElementById('bg');
 	
 	bgmusic.play();
 	let play = false;
 	let score = 0;
+	
 	btn.addEventListener('click', function(){
 		if(!play){
 			play = true;
@@ -82,7 +82,7 @@
 				guess.value = "";
 			}
 			else{
-				// msg.innerHTML = `Ooops! Wrong Answer, Try Agian: ${randomWords}`;
+				msg.innerHTML = `Ooops! Wrong Answer, Try Agian: ${randomWords}`;
 				score -= 1;
 				alert(` Ooops! 😕 Wrong Answer.. Your score is decreasing and It is ${score}`);
 				if(score < 0){
