@@ -22,6 +22,7 @@
 		<h3 class="msg"></h3>
 		<input type="text" class="hidden">
 		<button class="btn">Click Here to Start</button>
+		<!-- <button class="btn">Hint</button> -->
 	</div>
 </section>
 <audio src="Music/KBC-next.mpeg"></audio>
@@ -31,13 +32,15 @@
 	const msg = document.querySelector('.msg');
 	const guess = document.querySelector('input');
 	const btn = document.querySelector('.btn');
+	const hint = document.querySelector('.btn');
 	
-	let sWords = ['Lakhimpur', 'Sitapur', 'Ghaziabad', 'Salman' , 'Iron-Man', 'Hulk' , 'Thor', 'Lucknow','Gorakhpur','AKGEC'];
+	let sWords = ['Lakhimpur', 'Sitapur', 'Ghaziabad', 'Salman' , 'Iron-Man', 'Hulk' , 'Thor', 'Lucknow','Gorakhpur','AKGEC','Batman','Instagram',
+'Study','Facebook','WhatsApp','BGMI','India'];
 	let newWords = " ";
 	let randomWords = " ";
 
 	const createNewWords = () => {
-		let randNum = Math.floor(Math.random() * sWords.length)
+		let randNum = Math.floor(Math.random() * sWords.length);
 		let newSWords = sWords[randNum];
 		return newSWords;
 
@@ -59,6 +62,7 @@
 
 	let play = false;
 	let score = 0;
+	bgmusic.play();
 	btn.addEventListener('click', function(){
 		if(!play){
 			play = true;
@@ -73,7 +77,7 @@
 			if(guessWord === newWords){
 				score += 1;
 				play = false;
-				msg.innerHTML = `Awesome!! Correct, It's ${newWords}. Your Score : ${score}`
+				msg.innerHTML = `Awesome!! 👏🏻👏🏻 Correct, It's ${newWords}. Your Score : ${score}`
 				btn.innerHTML = 'Start Again';
 				guess.classList.toggle('hidden');
 				guess.value = "";
@@ -81,7 +85,16 @@
 			else{
 				msg.innerHTML = `Ooops! Wrong Answer, Try Agian: ${randomWords}`;
 				score -= 1;
+				alert(` Ooops! 😕 Wrong Answer.. Your score is decreasing and It is ${score}`);
+				if(score < 0){
+				msg.innerHTML = `Correct word is ${newWords}`;
+				}
+				play = false;
+				btn.innerHTML = 'Start Again';
+				guess.classList.toggle('hidden');
+				guess.value = "";
 			}
+
 		}
 	});
 </script>
