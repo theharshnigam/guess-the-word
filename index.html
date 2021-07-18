@@ -59,10 +59,9 @@
 	const music = document.querySelector('music');
 	const bgmusic = document.getElementById('bg');
 	
-
+	bgmusic.play();
 	let play = false;
 	let score = 0;
-	bgmusic.play();
 	btn.addEventListener('click', function(){
 		if(!play){
 			play = true;
@@ -83,7 +82,7 @@
 				guess.value = "";
 			}
 			else{
-				msg.innerHTML = `Ooops! Wrong Answer, Try Agian: ${randomWords}`;
+				// msg.innerHTML = `Ooops! Wrong Answer, Try Agian: ${randomWords}`;
 				score -= 1;
 				alert(` Ooops! 😕 Wrong Answer.. Your score is decreasing and It is ${score}`);
 				if(score < 0){
