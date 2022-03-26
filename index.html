@@ -16,6 +16,7 @@
 	<div>
 		<h2>In this Game you have to find the correct sensible word.</h2>
 		<p>For every correct word, you will be rewarded with +1 point otherwise 0 for one wrong guess and -1 for guessing same word wrong again and again.</p>
+		<h1 style="color: black;"></h1>
 	</div>
 <section>
 	<div class="gameArea">
@@ -26,15 +27,16 @@
 	</div>
 </section>
 <audio src="Music/KBC-next.mpeg" id="nextMusic"></audio>
-<audio src="Music/kbc_background.mp3" id="bg"></audio>
+<audio src="Music/kbc_background.mpeg" id="bg"></audio>
 
 <script>
 	const msg = document.querySelector('.msg');
 	const guess = document.querySelector('input');
 	const btn = document.querySelector('.btn');
 	
-	let sWords = ['Lakhimpur', 'Sitapur', 'Ghaziabad', 'Salman' , 'Iron-Man', 'Hulk' , 'Thor', 'Lucknow','Gorakhpur','AKGEC','Batman','Instagram',
-'Study','Facebook','WhatsApp','BGMI','India'];
+	
+	let sWords = ['lakhimpur', 'sitapur', 'ghaziabad' , 'iron man', 'hulk' , 'thor', 'lucknow','gorakhpur','batman','instagram',
+'study','facebook','whatsapp','BGMI','india','teacher','student','tea','doraemon','sinchan','mumbai','TMKOC','oggy','pencil','pen','eraser','dance'];
 	let newWords = " ";
 	let randomWords = " ";
 
@@ -61,10 +63,12 @@
 	bgmusic.play();
 	let play = false;
 	let score = 0;
+	let countPlay = 0;
 	
 	btn.addEventListener('click', function(){
 		if(!play){
 			play = true;
+			countPlay += 1;
 			btn.innerHTML ="Guess";
 			guess.classList.toggle('hidden');
 			music.play();
@@ -72,11 +76,11 @@
 			randomWords = ScrambleWords(newWords.split("")).join("");
 			msg.innerHTML = `Guess the Word : ${randomWords}`;
 		}else{
-			let guessWord = guess.value;
+			let guessWord = guess.value.toLowerCase();
 			if(guessWord === newWords){
 				score += 1;
 				play = false;
-				msg.innerHTML = `Awesome!! 👏🏻👏🏻 Correct, It's ${newWords}. Your Score : ${score}`
+				msg.innerHTML = `Round : ${countPlay} <br> Correct answer!! It is '${newWords}'. <br> Your Score : ${score} `
 				btn.innerHTML = 'Start Again';
 				guess.classList.toggle('hidden');
 				guess.value = "";
@@ -85,8 +89,8 @@
 				msg.innerHTML = `Ooops! Wrong Answer, Try Agian: ${randomWords}`;
 				score -= 1;
 				alert(` Ooops! 😕 Wrong Answer.. Your score is decreasing and It is ${score}`);
-				if(score < 0){
-				msg.innerHTML = `Correct word is ${newWords}`;
+				if(score<1000){
+				msg.innerHTML = `Round : ${countPlay} <br> Correct word : '${newWords}' <br> You have written : '${guessWord}' <br> Score : ${score} `;
 				}
 				play = false;
 				btn.innerHTML = 'Start Again';
