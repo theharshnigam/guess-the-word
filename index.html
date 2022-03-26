@@ -87,7 +87,7 @@
 			}
 			else{
 				msg.innerHTML = `Ooops! Wrong Answer, Try Agian: ${randomWords}`;
-				score -= 1;
+				score =0;
 				alert(` Ooops! 😕 Wrong Answer.. Your score is decreasing and It is ${score}`);
 				if(score<1000){
 				msg.innerHTML = `Round : ${countPlay} <br> Correct word : '${newWords}' <br> You have written : '${guessWord}' <br> Score : ${score} `;
