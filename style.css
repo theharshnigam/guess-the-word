@@ -15,7 +15,7 @@ h1{
     text-transform: uppercase;
 }
 h1:hover{
-    letter-spacing: 7px;
+    letter-spacing: 8px;
     color: aliceblue;
 }
 h5{
