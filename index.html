@@ -19,10 +19,10 @@
 		<h1 style="color: black;"></h1>
 	</div>
 <section>
-	<div class="gameArea">
+	<div class=" block glow gameArea">
 		<h3 class="msg"></h3>
 		<input type="text" class="hidden">
-		<button class="btn">Click Here to Start</button>
+		<button class="btn">Click Here to Start </button>
 		<!-- <button class="btn">Hint</button> -->
 	</div>
 </section>
@@ -35,7 +35,7 @@
 	const btn = document.querySelector('.btn');
 	
 	
-	let sWords = ['lakhimpur', 'sitapur', 'ghaziabad' , 'iron man', 'hulk' , 'thor', 'lucknow','gorakhpur','batman','instagram',
+	let sWords = ['lakhimpur', 'sitapur', 'ghaziabad' , 'iron-man', 'hulk' , 'thor', 'lucknow','gorakhpur','batman','instagram',
 'study','facebook','whatsapp','BGMI','india','teacher','student','tea','doraemon','sinchan','mumbai','TMKOC','oggy','pencil','pen','eraser','dance'];
 	let newWords = " ";
 	let randomWords = " ";
@@ -87,7 +87,7 @@
 			}
 			else{
 				msg.innerHTML = `Ooops! Wrong Answer, Try Agian: ${randomWords}`;
-				score =0;
+				score -=1;
 				alert(` Ooops! 😕 Wrong Answer.. Your score is decreasing and It is ${score}`);
 				if(score<1000){
 				msg.innerHTML = `Round : ${countPlay} <br> Correct word : '${newWords}' <br> You have written : '${guessWord}' <br> Score : ${score} `;
