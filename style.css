@@ -150,3 +150,13 @@ button.btn:hover, button.btn:focus, button.btn:active{
     filter: blur(60px);
     opacity: 0.9;
 }
+
+@media screen and (max-width:480px) {
+    .block {
+        position: relative;
+        margin: 35% auto 0;
+        width: 70%;
+        height: 400px;
+        background: linear-gradient(0deg, black, rgb(17, 3, 3));
+    }
+}
