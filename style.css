@@ -33,7 +33,7 @@ section{
 }
 
 .gameArea{
-    background-color: #2c3e50;
+    background-color: black;
     width: 50%;
     height: 400px;
     padding: 20px 0;
@@ -41,7 +41,6 @@ section{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    box-shadow: 8px 8px 8px -4px rgba(255, 0, 0, 0.7);
 }
 
 h3{
@@ -99,3 +98,54 @@ button.btn:hover, button.btn:focus, button.btn:active{
 
 
 
+
+
+
+.text{
+
+    color: aliceblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    
+}
+
+.block {
+    position: relative;
+    margin: 10% auto 0;
+    width: 50%;
+    height: 400px;
+    background: linear-gradient(0deg, black, rgb(17, 3, 3));
+}
+
+.glow::before , .glow::after {
+    content: "";
+    position: absolute;
+    left: -2px;
+    top: -2px;
+    background: linear-gradient(45deg ,red, violet, indigo, blue,rgb(12, 221, 12),yellow,orange);
+    background-size: 400%;
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    z-index: -1;
+    animation: animate 20s linear infinite;
+}
+
+@keyframes animate {
+    0% {
+        background-position: 0 0;
+    }
+    50%{
+        background-position: 400%;
+    }
+    100%{
+        background-position: 0 0;
+    }
+    
+}
+
+.glow::after {
+    filter: blur(60px);
+    opacity: 0.9;
+}
